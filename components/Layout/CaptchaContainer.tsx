@@ -7,7 +7,7 @@ interface IProps {
 const CaptchaContainer: React.FC<IProps> = ({ children }) => {
   return (
     <GoogleReCaptchaProvider
-      reCaptchaKey="6LeMZTcmAAAAAHrJJBeh_1L3FqVTYfXCYVJ_RHuY"
+      reCaptchaKey="6Lclic8mAAAAAKDi0xb5FKlxhzqwJULrQG5hhLIy"
       scriptProps={{
         async: false,
         defer: false,

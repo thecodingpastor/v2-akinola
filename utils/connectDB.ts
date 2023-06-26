@@ -6,6 +6,12 @@ const connectDB = async () => {
       ? process.env.LOCAL_MONGO_URI
       : process.env.LIVE_MONGO_URI;
 
+  console.log("======================================================");
+  console.log(process.env.LIVE_MONGO_URI);
+  console.log(process.env.NODE_ENV);
+  console.log(process.env.TEST_ENV);
+  console.log("======================================================");
+
   // mongoose.set("strictQuery", false);
   return mongoose
     .connect(connectionString!)
