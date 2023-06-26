@@ -26,7 +26,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     await SendEmail({
       to: process.env.EMAIL_USER,
-      // from: Email,
       from: process.env.EMAIL_USER,
       html: `
             <h3>${FullName} reached out to you.</h3>
