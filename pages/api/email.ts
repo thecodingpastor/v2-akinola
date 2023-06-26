@@ -15,9 +15,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(401).json({ message: "Invalid request." });
 
   const { FullName, Email, Message, gReCaptchaToken } = req.body;
-  console.log("==================================");
-  console.log(req.body);
-  console.log("==================================");
 
   try {
     const reCaptchaRes = await fetchGoogleScore(gReCaptchaToken);
@@ -26,6 +23,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(401).json({
         message: "Unexpected error",
       });
+
+    console.log("==================================");
+    console.log(reCaptchaRes);
+    console.log("==================================");
 
     const email = await SendEmail({
       to: process.env.EMAIL_USER,

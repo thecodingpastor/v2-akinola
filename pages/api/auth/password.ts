@@ -38,10 +38,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
       user.passwordResetToken = resetToken;
       user.passwordResetExpires = Date.now() + 10 * 60 * 1000;
-      const test = await user.save(
-        { validateBeforeSave: false },
-        { new: true }
-      );
+      await user.save({ validateBeforeSave: false }, { new: true });
 
       const resetURL =
         process.env.NODE_ENV === "production"
