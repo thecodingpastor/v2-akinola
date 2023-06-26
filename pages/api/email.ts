@@ -24,10 +24,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         message: "Unexpected error",
       });
 
-    console.log("==================================");
-    console.log(reCaptchaRes);
-    console.log("==================================");
-
     const email = await SendEmail({
       to: process.env.EMAIL_USER,
       from: process.env.EMAIL_USER,
@@ -38,7 +34,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       subject: "Message from michaelakinola.com",
       replyTo: Email,
     });
+    console.log("==================================");
     console.log(email);
+    console.log("==================================");
 
     res.json("ok");
   } catch (err: any) {
