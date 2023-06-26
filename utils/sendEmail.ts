@@ -33,6 +33,7 @@ const SendEmail = async ({ from, to, subject, html, replyTo = "" }) => {
   console.log("==================================");
   console.log(data);
   console.log("==================================");
+  console.log("==================================");
 
   return data;
 };
