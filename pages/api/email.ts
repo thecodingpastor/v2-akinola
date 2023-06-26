@@ -15,6 +15,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(401).json({ message: "Invalid request." });
 
   const { FullName, Email, Message, gReCaptchaToken } = req.body;
+  console.log("==================================");
   console.log(req.body);
   console.log("==================================");
 
