@@ -24,7 +24,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         message: "Unexpected error",
       });
 
-    await SendEmail({
+    const email = await SendEmail({
       to: process.env.EMAIL_USER,
       from: process.env.EMAIL_USER,
       html: `
@@ -34,6 +34,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       subject: "Message from michaelakinola.com",
       replyTo: Email,
     });
+    console.log(email);
+
     res.json("ok");
   } catch (err: any) {
     res.status(500).json({ message: err.message || "Something went wrong" });
