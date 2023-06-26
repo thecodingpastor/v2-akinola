@@ -1,0 +1,74 @@
+@import "../../styles/variables.scss";
+
+.Skeleton {
+  opacity: 0.7;
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+.Container {
+  box-shadow: 0 0 5px $color-pry-dark;
+  border-radius: 2rem;
+  overflow: hidden;
+  background: white;
+
+  .Inner {
+    padding: 1rem;
+  }
+
+  .Image {
+    height: 13rem;
+    border-radius: 2rem 2rem 0 0;
+
+    @media screen and (min-width: 780px) {
+      max-height: 26rem;
+    }
+  }
+
+  span {
+    display: block;
+    height: 0.8rem;
+    margin-top: 0.3rem;
+    border-radius: 0.5rem;
+  }
+
+  .Group {
+    margin-bottom: 1.5rem;
+  }
+
+  .Full {
+    width: 100%;
+  }
+
+  .Half {
+    width: 50%;
+  }
+
+  .Box {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .Date {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .Footer {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: $color-pry;
+  }
+
+  100% {
+    background-color: $background-color;
+  }
+}

@@ -1,0 +1,52 @@
+@import "../../../../styles/variables.scss";
+
+.Container {
+  padding: 1rem;
+  background-color: lighten($background-color, 8%);
+  margin-top: 2rem;
+  border-radius: 2rem 2rem 0 0;
+
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  ul {
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+
+  svg {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  li {
+    background-color: $background-color-light;
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    border: 2px solid $color-pry;
+    transition: 300ms;
+    position: relative;
+
+    &:hover {
+      border: 2px solid transparent;
+      box-shadow: 0 0 5px rgba($color-pry, 0.7);
+    }
+
+    small {
+      color: black;
+      font-weight: 600;
+    }
+
+    h3 {
+      font-size: 2.2rem;
+      line-height: 1.1;
+    }
+
+    p {
+      line-height: 1.2;
+    }
+  }
+}

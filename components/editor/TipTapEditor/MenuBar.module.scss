@@ -1,0 +1,49 @@
+@import "../../../styles/variables.scss";
+
+.MenuBarContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  background: $background-color-light;
+  padding: 0.5rem;
+  border-radius: 2rem 2rem 0 0;
+  padding: 2rem;
+  position: sticky;
+  top: 7rem;
+  z-index: 1;
+
+  button {
+    border: none;
+    outline: 2px solid transparent;
+    background: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    height: 3.5rem;
+    font-weight: bold;
+    color: $color-pry-dark;
+    transition: 500ms;
+
+    &.IsActive,
+    &:hover {
+      background: linear-gradient(135deg, $background-color-light, transparent);
+      outline: 2px solid $color-pry;
+      color: $color-pry;
+    }
+
+    &:disabled {
+      color: gray;
+
+      &:hover {
+        background: none;
+        outline: 2px solid gray;
+      }
+    }
+
+    svg {
+      font-size: 2rem;
+    }
+  }
+}

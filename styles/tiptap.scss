@@ -1,0 +1,137 @@
+.ReadMode {
+  .ProseMirror {
+    background-color: lighten($background-color-light, 5%);
+  }
+}
+// Tiptap Editor
+.ProseMirror {
+  background-color: white;
+  border-radius: 0 0 1rem 1rem;
+  padding: 1rem;
+
+  &:focus {
+    outline: none;
+  }
+
+  > * + * {
+    margin-top: 0.75em;
+  }
+
+  a {
+    color: white;
+    background-color: $background-color-light;
+    display: inline-block;
+    padding: 0.2rem 0.4rem;
+    border-radius: 2rem;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  h1,
+  h2,
+  h3 {
+    line-height: 1.1;
+  }
+
+  img {
+    width: 100%;
+    max-width: 80rem;
+    object-fit: contain;
+    margin: 0 auto;
+    border-radius: 1rem;
+  }
+
+  h1 {
+    font-size: 4rem;
+
+    @media screen and (max-width: 650px) {
+      font-size: 2.5rem;
+    }
+  }
+  h2 {
+    font-size: 3rem;
+
+    @media screen and (max-width: 650px) {
+      font-size: 2.5rem;
+    }
+  }
+  h3 {
+    font-size: 2.5rem;
+
+    @media screen and (max-width: 650px) {
+      font-size: 2.5rem;
+    }
+  }
+
+  ul,
+  ol {
+    padding: 0 2rem;
+  }
+
+  pre {
+    // white-space:pre is to make the code block scrollable, with the addition of overflow-x:auto , it prevents a long line from breaking into another line
+    white-space: pre !important;
+    overflow-x: auto;
+    // ==================================
+    background: #080948;
+    color: #fff;
+    font-family: "JetBrainsMono", monospace;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+
+    .hljs-comment,
+    .hljs-quote {
+      color: #616161;
+    }
+
+    .hljs-variable,
+    .hljs-template-variable,
+    .hljs-attribute,
+    .hljs-tag,
+    .hljs-name,
+    .hljs-regexp,
+    .hljs-link,
+    .hljs-name,
+    .hljs-selector-id,
+    .hljs-selector-class {
+      color: #f98181;
+    }
+
+    .hljs-number,
+    .hljs-meta,
+    .hljs-built_in,
+    .hljs-builtin-name,
+    .hljs-literal,
+    .hljs-type,
+    .hljs-params {
+      color: #fbbc88;
+    }
+
+    .hljs-string,
+    .hljs-symbol,
+    .hljs-bullet {
+      color: #b9f18d;
+    }
+
+    .hljs-title,
+    .hljs-section {
+      color: #faf594;
+    }
+
+    .hljs-keyword,
+    .hljs-selector-tag {
+      color: #70cff8;
+    }
+
+    .hljs-emphasis {
+      font-style: italic;
+    }
+
+    .hljs-strong {
+      font-weight: 700;
+    }
+  }
+}

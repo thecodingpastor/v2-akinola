@@ -1,0 +1,12 @@
+@import "../../../styles/variables.scss";
+
+.TipTapContainer {
+  width: 100%;
+  margin: 0 auto;
+  border: 2px solid $color-pry-dark;
+  border-radius: 2rem 2rem 1rem 1rem;
+
+  &.ReadMode {
+    border: none;
+  }
+}

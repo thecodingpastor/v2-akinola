@@ -1,0 +1,68 @@
+@import "../../../../styles/variables.scss";
+
+.Outer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.Container {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+
+  svg {
+    font-size: 3.5rem;
+    color: $background-color;
+    background: $color-pry-dark;
+    border-radius: 50%;
+    border: 2px solid $color-pry-dark;
+    min-width: 3.5rem;
+
+    &.Disabled {
+      background: darkgray;
+      border: 2px solid darkgray;
+      color: #ddd;
+      pointer-events: none;
+    }
+  }
+
+  .Div {
+    display: flex;
+    background-color: $background-color;
+    border-radius: 1rem;
+    position: relative;
+    overflow: hidden;
+
+    li {
+      display: flex;
+      justify-content: center;
+      cursor: pointer;
+      padding: 0 0.5rem;
+      font-size: 2rem;
+      color: $color-pry-dark;
+      width: max-content;
+      min-width: 3rem;
+
+      &.Dots:hover {
+        background-color: transparent;
+        cursor: default;
+      }
+
+      &:not(:last-child) {
+        border-right: 1px solid $color-pry-dark;
+      }
+
+      &.Selected,
+      &:hover {
+        background-color: $color-pry-dark;
+        color: $background-color;
+      }
+    }
+  }
+}

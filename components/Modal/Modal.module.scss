@@ -1,0 +1,63 @@
+@import "../../styles/variables.scss";
+
+.Container {
+  position: fixed;
+  z-index: 12;
+  width: 70rem;
+  max-width: 95%;
+  max-height: 90vh;
+  border-radius: 2rem;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: top left;
+  transition: 500ms ease-in-out;
+  background: $background-color-light;
+  border: 2px solid $color-pry-dark;
+  padding: 1rem;
+
+  .Close {
+    color: $color-danger;
+    position: absolute;
+    top: -2rem;
+    left: 1rem;
+    font-size: 3rem;
+    z-index: 14;
+    background-color: white;
+    border-radius: 50%;
+  }
+
+  h3 {
+    text-align: center;
+  }
+}
+
+.ScaleUp {
+  animation: ScaleUp 500ms forwards;
+}
+.ScaleDown {
+  animation: ScaleDown 500ms forwards;
+}
+
+@keyframes ScaleDown {
+  0% {
+    scale: 0.7;
+  }
+
+  70% {
+    scale: 1.05;
+  }
+
+  100% {
+    scale: 1;
+  }
+}
+
+@keyframes ScaleUp {
+  0% {
+    scale: 1;
+  }
+  100% {
+    scale: 0;
+  }
+}

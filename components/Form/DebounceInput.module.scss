@@ -1,0 +1,53 @@
+@import "../../styles/variables.scss";
+
+.Container {
+  position: relative;
+
+  .RelatedPosts {
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 5px double $color-pry-dark;
+
+    li {
+      cursor: pointer;
+      border: 1px solid $color-pry-dark;
+      padding: 0.5rem;
+      border-radius: 1rem;
+      margin-top: 1rem;
+      transition: 300ms;
+
+      &:hover {
+        color: white;
+        background-color: $color-pry;
+      }
+    }
+  }
+
+  .Selected {
+    margin-bottom: 2rem;
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem;
+      border-radius: 1rem;
+      margin-top: 1rem;
+      color: white;
+      background-color: $color-pry-dark;
+    }
+
+    span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      font-weight: 600;
+      background-color: white;
+      color: $color-pry-dark;
+      cursor: pointer;
+    }
+  }
+}
