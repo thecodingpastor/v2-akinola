@@ -13,7 +13,13 @@ const Protect = (handler: Function) => {
 
     if (headAuth && headAuth.startsWith("Bearer")) {
       token = headAuth.split(" ")[1];
+    } else if (req.cookies.akinola) {
+      token = req.cookies.akinola;
     }
+
+    console.log("==============================");
+    console.log(token);
+    console.log("==============================");
 
     if (!token) {
       return res.status(401).json({
