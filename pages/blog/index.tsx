@@ -28,6 +28,15 @@ const BlogPage = () => {
     itemsPerPage,
   } = useAppSelector(SelectBlog);
 
+  console.log({
+    blogPosts,
+    oldPage,
+    page,
+    totalItemsCount,
+    totalPages,
+    itemsPerPage,
+  });
+
   useEffect(() => {
     if (blogPosts === null || oldPage !== page) {
       if (page > totalPages) {

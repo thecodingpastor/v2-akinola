@@ -142,6 +142,7 @@ const BlogExtraReducers = (
     PublishAndUnpublishBlog.fulfilled,
     (state, action: PayloadAction<{ _id: string; isPublished: boolean }>) => {
       state.blogLoading = null;
+
       if (state.currentBlog) {
         state.currentBlog = {
           ...state.currentBlog,

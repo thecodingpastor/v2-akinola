@@ -3,6 +3,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import connectDB from "../../../utils/connectDB";
 import BlogPost from "../../../models/blogPost";
 import Protect from "../../../middleware/protect";
+import User from "../../../models/userModel";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== "PUT")
@@ -21,6 +22,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     if (!blog)
       return res.status(404).json({ message: `The blog could not be found` });
+
+    await User.findOneAndUpdate(
+      {
+        email: process.env.EMAIL_USER,
+      },
+      { $inc: { publishedBlogPost: blog.isPublished ? 1 : -1 } }
+    );
 
     res.json({ _id: blog._id, isPublished: blog.isPublished });
   } catch (err: any) {
