@@ -13,11 +13,11 @@
 
   &.pry {
     color: $color-pry-dark;
-    background-color: $background-color-light;
-    border: 1px solid $color-pry-dark;
+    border: 2px solid $color-pry-dark;
 
     &:hover {
-      background-color: darken($background-color-light, 10%);
+      background-color: $color-pry-dark;
+      color: white;
     }
   }
 

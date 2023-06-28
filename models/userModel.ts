@@ -42,6 +42,10 @@ const UserSchema = new Schema(
       type: Number,
       default: 0,
     },
+    publishedBlogCount: {
+      type: Number,
+      default: 0,
+    },
     hits: {
       type: Number,
       default: 0,

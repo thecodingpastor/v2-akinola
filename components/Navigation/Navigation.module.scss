@@ -75,17 +75,11 @@
         margin-right: 0.5rem;
         padding: 0.5rem 1rem;
       }
-
-      &:hover,
-      &:active {
-        background-color: $background-color;
-        color: $color-pry-dark;
-      }
     }
   }
 
   .Active {
-    background-color: $background-color;
+    background-color: white;
     color: $color-pry-dark;
   }
 }

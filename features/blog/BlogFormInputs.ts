@@ -22,10 +22,12 @@ export const BlogFormInputsArray = [
   },
   {
     name: "intro",
+    type: "textarea",
+    charsLeft: 200,
     label: "Introduction",
     placeholder: "Introduction",
     required: true,
-    pattern: "^.{10,200}$",
-    errorText: "Intro should be 10 - 200 characters",
+    pattern: "^.{100,200}$",
+    errorText: "Intro should be 100 - 200 characters",
   },
 ];

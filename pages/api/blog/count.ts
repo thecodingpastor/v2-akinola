@@ -22,12 +22,16 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         { $inc: { hits: 1 } },
         { new: true }
       );
-      const { blogCount, hits } = user;
+
+      const { blogCount, publishedBlogCount, hits } = user;
+      const totalItemsCount = !req.cookies.akinola
+        ? publishedBlogCount
+        : blogCount;
       const itemsPerPage = 3;
 
       res.json({
-        totalItemsCount: blogCount,
-        totalPages: Math.ceil(blogCount / itemsPerPage),
+        totalItemsCount,
+        totalPages: Math.ceil(totalItemsCount / itemsPerPage),
         hits,
         itemsPerPage,
       });

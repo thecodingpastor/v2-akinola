@@ -30,6 +30,7 @@ const authExtraReducers = (
     state.userLoading = null;
     state.accessToken = null;
     state.userId = null;
+    window.location.href = "/";
   });
 
   // // =============ForgotPassword ======================

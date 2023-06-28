@@ -3,7 +3,7 @@
 .Container {
   background: white;
   color: $color-pry-dark;
-  box-shadow: 0 0 5px $color-pry;
+  box-shadow: 0 0 5px $color-pry-dark;
   border-radius: 2rem;
   cursor: pointer;
   display: flex;
@@ -12,7 +12,7 @@
 
   &.Loading {
     pointer-events: none;
-    background-color: $background-color-light;
+    background-color: #eee;
     filter: blur(1px);
 
     img {
@@ -29,7 +29,7 @@
     text-transform: capitalize;
     margin: 1rem;
     font-size: 2rem;
-    color: $color-pry;
+    color: $color-pry-dark;
     overflow: hidden;
     line-height: 1.2;
     text-overflow: ellipsis;

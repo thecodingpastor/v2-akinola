@@ -9,6 +9,8 @@ import { usePagination, DOTS } from "./usePagination";
 
 import { SetPage } from "../../blogSlice";
 
+import { useEffect } from "react";
+
 import classes from "./Index.module.scss";
 
 interface IProps {
@@ -39,12 +41,12 @@ const MyPagination = ({
 
   const setPage = (param: number) => dispatch(SetPage(param));
 
-  //   useEffect(() => {
-  //     // This useEffect will make set the active page to 1
-  //     if (currentPage > totalPages) {
-  //       setPage(1);
-  //     }
-  //   }, [currentPage, totalPages]);
+  useEffect(() => {
+    // This useEffect will make set the active page to 1 if a user one way or the other enables the disabled buttons
+    if (currentPage > totalPages || currentPage < 1) {
+      setPage(1);
+    }
+  }, [currentPage, totalPages]);
 
   if (currentPage === 0 || paginationRange.length < 2) {
     return null;

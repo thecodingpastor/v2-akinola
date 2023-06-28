@@ -27,7 +27,7 @@ const initialState: InitialBlogStateType = {
     intro: prevBlog?.intro || "",
     mainContent: prevBlog?.mainContent || "",
     images: prevBlog?.images || [],
-    tags: prevBlog?.tags || [],
+    relatedPosts: prevBlog?.relatedPosts || [],
   },
 };
 

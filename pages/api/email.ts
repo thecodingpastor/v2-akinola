@@ -24,6 +24,14 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         message: "Unexpected error",
       });
 
+    console.log("=================================");
+    console.log(" live site => ", process.env.LIVE_SITE);
+    console.log("host => ", process.env.EMAIL_HOST);
+    console.log("user => ", process.env.EMAIL_USER);
+    console.log("service => ", process.env.EMAIL_SERVICE);
+
+    console.log("=================================");
+
     const email = await SendEmail({
       to: process.env.EMAIL_USER,
       from: process.env.EMAIL_USER,

@@ -31,8 +31,7 @@ const Layout: React.FC<IProps> = (props) => {
   const dispatch = useAppDispatch();
   const { alertMessages } = useAppSelector(SelectUI);
   const { userId } = useAppSelector(SelectAuth);
-  const { currentBlog, draftBlog, totalItemsCount } =
-    useAppSelector(SelectBlog);
+  const { currentBlog, draftBlog } = useAppSelector(SelectBlog);
 
   // This adds the accessToken to the request headers on load
   useAxiosProtected();
@@ -55,7 +54,6 @@ const Layout: React.FC<IProps> = (props) => {
         dispatch(SetTotalPages(data.payload.totalPages));
         dispatch(SetTotalItemsCount(data.payload.totalItemsCount));
         dispatch(SetHits(data.payload.hits));
-        // dispatch(SetOldPage(1)); // Not sure i need this
       }
     });
   }, []);

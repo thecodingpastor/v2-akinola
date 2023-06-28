@@ -3,6 +3,7 @@
 .Container {
   min-height: 80vh;
   background-color: $background-color-light;
+  background-color: white;
   display: flex;
   flex-direction: column;
   margin-top: 4rem;
@@ -39,8 +40,9 @@
       height: max-content;
 
       img {
-        background-color: darken($background-color-light, 5%);
+        // background-color: darken($background-color-light, 5%);
         border: 3px solid $background-color;
+        border: 3px solid $color-pry-dark;
         border-radius: 50%;
       }
     }
@@ -105,9 +107,11 @@
   .Skills {
     margin: 0 auto;
     text-align: center;
-    border-radius: 4rem;
+    border-radius: 4rem 4rem 1rem 1rem;
+    overflow: hidden;
     background-color: $color-pry-dark;
     margin-bottom: 2rem;
+    box-shadow: 0 0 5px $color-pry-dark;
 
     @media screen and (max-width: 860px) {
       margin: 0 2rem;

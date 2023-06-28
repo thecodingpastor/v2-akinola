@@ -2,10 +2,9 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
 import FormInput from "./FormInput";
-import { useAppDispatch, useAppSelector } from "../../fetchConfig/store";
+import { useAppDispatch } from "../../fetchConfig/store";
 import { GetRelatedBlogPosts } from "../../features/blog/blogApi";
 
-import { SelectBlog } from "../../features/blog/blogSlice";
 import Spin from "../Loaders/Spin";
 import { RelatedPostType } from "../../features/blog/types";
 import { AddAlertMessage } from "../../features/UI/UISlice";
@@ -29,10 +28,12 @@ const DebounceInput: React.FC<IProps> = ({
   const { query } = useRouter();
 
   useEffect(() => {
+    // This is for debounce
     let timer: NodeJS.Timeout;
     if (Value.trim().length > 4) {
       setLoading(true);
       timer = setTimeout(() => {
+        setRelatedPosts([]);
         dispatch(
           GetRelatedBlogPosts({
             searchTerm: Value,
@@ -41,10 +42,10 @@ const DebounceInput: React.FC<IProps> = ({
         ).then((data) => {
           if (data.meta.requestStatus === "fulfilled") {
             setRelatedPosts(data.payload);
+            data.payload.length > 0 && setValue("");
           }
           setLoading(false);
         });
-        // setDebouncedValue(value);
       }, 2000);
     }
 
@@ -54,11 +55,11 @@ const DebounceInput: React.FC<IProps> = ({
   }, [Value]);
 
   useEffect(() => {
+    // To remove the loading state from the Loading if request was perhaps not made
     let timer: NodeJS.Timeout;
     if (Value.trim().length < 5) {
       timer = setTimeout(() => {
         setLoading(false);
-        // setDebouncedValue(value);
       }, 1000);
     }
     return () => {
@@ -73,16 +74,18 @@ const DebounceInput: React.FC<IProps> = ({
         onChange={(e: any) => {
           setValue(e.target.value);
         }}
+        border
         value={Value}
         label="Enter at least 5 characters"
-        // label="Related Blog Posts"
         placeholder="Related Blog Posts"
       />
       {Loading && (
         <Spin style={{ position: "absolute", right: "1rem", top: "1rem" }} />
       )}
       {Loading ? (
-        <p className="text-center">Please wait ...</p>
+        <p className="text-center" style={{ marginBottom: "1rem" }}>
+          Please wait ...
+        </p>
       ) : relatedPosts.length > 0 ? (
         <ul className={classes.RelatedPosts}>
           {relatedPosts.map((post) => (
@@ -113,8 +116,12 @@ const DebounceInput: React.FC<IProps> = ({
       ) : relatedPosts.length === 0 && Value.trim()?.length < 5 ? (
         <p className="text-center">Enter at least 5 characters to search.</p>
       ) : (
-        <p className="text-center">
-          {/* No related post with the search term "{Value}" was found. */}
+        <p className="text-center" style={{ marginBottom: "1rem" }}>
+          {SelectedRelatedPosts.length === 0 && (
+            <>
+              No related post with the search term <b>{Value}</b> was found.
+            </>
+          )}
         </p>
       )}
 

@@ -40,6 +40,7 @@ body {
   line-height: 1.7;
   color: $color-pry-dark;
   background-color: $background-color-light;
+  background-color: white;
   font-size: 1.6rem;
   overflow-x: hidden;
 }
@@ -86,6 +87,32 @@ svg {
   // animation: slideUp 1s;
   transform: translateY(-100vh);
   opacity: 0;
+}
+
+::selection {
+  background: $background-color-light;
+}
+
+::-webkit-scrollbar {
+  width: 2rem;
+
+  &-track {
+    background-color: #f1f1f1;
+  }
+
+  &-thumb {
+    background-color: #999;
+    border-radius: 1rem;
+    border: 0.5rem solid #f1f1f1;
+
+    &:hover {
+      background-color: #666;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 0.7rem;
+  }
 }
 
 @keyframes slideDown {

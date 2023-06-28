@@ -18,7 +18,7 @@
 
   svg {
     font-size: 3.5rem;
-    color: $background-color;
+    color: white;
     background: $color-pry-dark;
     border-radius: 50%;
     border: 2px solid $color-pry-dark;
@@ -34,10 +34,11 @@
 
   .Div {
     display: flex;
-    background-color: $background-color;
     border-radius: 1rem;
     position: relative;
     overflow: hidden;
+    border: 1px solid $color-pry-dark;
+    color: $color-pry-dark;
 
     li {
       display: flex;
@@ -61,7 +62,7 @@
       &.Selected,
       &:hover {
         background-color: $color-pry-dark;
-        color: $background-color;
+        color: white;
       }
     }
   }

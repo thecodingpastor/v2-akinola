@@ -42,7 +42,8 @@ const BlogExtraReducers = (
   });
   builder.addCase(CreateBlog.fulfilled, (state, action) => {
     state.blogLoading = null;
-    state.blogPosts && state.blogPosts.unshift(action.payload);
+    state.currentBlog = action.payload;
+    state.totalItemsCount = state.totalItemsCount + 1;
   });
 
   // ============= UpdateBlog ======================
@@ -62,7 +63,7 @@ const BlogExtraReducers = (
   });
   // ============= DeleteBlog ======================
   builder.addCase(DeleteBlog.pending, (state) => {
-    state.blogLoading = "DeleteBlog";
+    state.blogLoading = "Delete Blog";
   });
   builder.addCase(DeleteBlog.rejected, (state) => {
     state.blogLoading = null;
@@ -73,6 +74,11 @@ const BlogExtraReducers = (
       state.blogPosts &&
       state.blogPosts.filter((blog) => blog?.slug !== action.meta.arg);
     state.currentBlog = null;
+    state.totalItemsCount = state.totalItemsCount - 1;
+
+    if (state.blogPosts?.length === 0) {
+      state.page = state.page - 1;
+    }
   });
 
   // ============= GetRelatedBlogPosts ======================
@@ -186,7 +192,10 @@ const BlogExtraReducers = (
             )
           : [];
     }
-    state.currentBlog = action.payload;
+    state.currentBlog = {
+      ...action.payload,
+      relatedPosts: state.currentBlog?.relatedPosts,
+    };
   });
   //   // ============= SendMessage ======================
   builder.addCase(SendMessage.pending, (state) => {

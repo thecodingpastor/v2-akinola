@@ -84,8 +84,7 @@ const BlogForm: React.FC<{ isEdit?: boolean }> = ({ isEdit }) => {
   const BlogIsValid =
     /^.{5,100}$/.test(title) &&
     /\d+/.test(estimatedReadTime) &&
-    // /^.{200,}$/.test(MainContent) &&
-    /^.{10,200}$/.test(intro);
+    /^.{100,200}$/.test(intro);
 
   // I only implemented this to create course, not to edit it
   const [Value, setValue] = useLocalStorage(
@@ -94,7 +93,7 @@ const BlogForm: React.FC<{ isEdit?: boolean }> = ({ isEdit }) => {
       ...BlogFormValues,
       mainContent: MainContent,
       images: Images,
-      // relatedPosts: SelectedRelatedPosts,
+      relatedPosts: SelectedRelatedPosts,
     },
     !isEdit
   );
@@ -107,7 +106,7 @@ const BlogForm: React.FC<{ isEdit?: boolean }> = ({ isEdit }) => {
             "You did not fill in the right data. Please look closely at the placeholder texts and error messages",
         })
       );
-    if (MainContent.trim().length < 40) {
+    if (MainContent.trim().length < 100) {
       return dispatch(
         AddAlertMessage({
           message: "Main content too small. Type more content in the editor",
@@ -117,11 +116,12 @@ const BlogForm: React.FC<{ isEdit?: boolean }> = ({ isEdit }) => {
     const handleReset = (data: any) => {
       if (data.meta.requestStatus === "fulfilled") {
         setDataIsSaved(true);
-        replace("/blog");
+        replace("/blog/" + data.payload.slug);
         setMainContent("");
         setBlogFormValues(init);
       }
     };
+
     if (!isEdit) {
       return dispatch(
         CreateBlog({
@@ -165,11 +165,6 @@ const BlogForm: React.FC<{ isEdit?: boolean }> = ({ isEdit }) => {
         isEdit={isEdit}
         isMultiple
       />
-      {/* <TaggedInput
-        TagsArray={TagsArray}
-        setTagsArray={setTagsArray}
-        setValue={setValue}
-      /> */}
       <form encType="multipart/form-data">
         {BlogFormInputsArray.map((input) => {
           return (

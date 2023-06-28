@@ -53,7 +53,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
       await connectDB();
 
-      const newBlogPost = await BlogPost.create({
+      const post = await BlogPost.create({
         title,
         mainContent,
         intro,
@@ -62,6 +62,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         images: imageResults,
         slug: slugify(title),
       });
+
+      const newBlogPost = await BlogPost.findById(post._id).populate({
+        path: "relatedPosts",
+        select: "title intro images slug",
+      });
+
       await User.findOneAndUpdate(
         { email: process.env.EMAIL_USER },
         { $inc: { blogCount: 1 } }

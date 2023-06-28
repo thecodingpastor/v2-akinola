@@ -13,7 +13,7 @@
   }
 
   & > div {
-    background-color: lighten($background-color-light, 5%);
+    box-sizing: 0 0 5px $color-pry-dark;
     border-radius: 1rem;
     height: max-content;
 

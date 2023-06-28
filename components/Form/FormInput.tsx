@@ -105,11 +105,25 @@ const FormInput: React.FC<FormInputPropsType> = ({
       {content}
       {type !== "select" && (
         <label htmlFor={name} className={classes.Label}>
-          {type === "textarea"
-            ? charsLeft - value?.trim().length > 0
-              ? charsLeft - value?.trim().length + " characters left."
-              : `Maximum character count ${charsLeft} exceeded.`
-            : label}
+          {type === "textarea" ? (
+            charsLeft - value?.trim().length >= 0 ? (
+              charsLeft - value?.trim().length + " characters left."
+            ) : (
+              <span
+                style={{
+                  color: "red",
+                  border: "1px solid red",
+                  display: "inline-block",
+                  padding: ".2rem .5rem",
+                  marginTop: "-.3rem",
+                }}
+              >
+                Maximum character count {charsLeft} exceeded.
+              </span>
+            )
+          ) : (
+            label
+          )}
         </label>
       )}
       {Focused && (
