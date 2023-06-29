@@ -16,7 +16,7 @@ import classes from "./reset.module.scss";
 
 const PasswordRestPage = () => {
   const router = useRouter();
-  const { token, email } = router.query;
+  const { token } = router.query;
   const dispatch = useAppDispatch();
   const { executeRecaptcha } = useGoogleReCaptcha();
 
@@ -35,12 +35,12 @@ const PasswordRestPage = () => {
     setLoading(true);
     // @ts-ignore
     executeRecaptcha("resetPassword").then((gReCaptchaToken) => {
-      dispatch(
-        ResetPassword({ ...Values, token, email, gReCaptchaToken })
-      ).then(() => {
-        setLoading(false);
-        router.replace("/");
-      });
+      dispatch(ResetPassword({ ...Values, token, gReCaptchaToken })).then(
+        () => {
+          setLoading(false);
+          router.replace("/");
+        }
+      );
     });
   };
 

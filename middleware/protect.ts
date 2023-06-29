@@ -17,10 +17,6 @@ const Protect = (handler: Function) => {
       token = req.cookies.akinola;
     }
 
-    console.log("==============================");
-    console.log(token);
-    console.log("==============================");
-
     if (!token) {
       return res.status(401).json({
         message: "Please log in to get access.",

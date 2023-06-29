@@ -64,7 +64,6 @@ export const ResetPassword = createAsyncThunk(
 
       return response.data;
     } catch (err: any) {
-      console.log(err);
       dispatch(
         AddAlertMessage({
           message:

@@ -38,12 +38,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
       user.passwordResetToken = resetToken;
       user.passwordResetExpires = Date.now() + 10 * 60 * 1000;
-      await user.save({ validateBeforeSave: false }, { new: true });
+      await user.save({ validateBeforeSave: false });
 
       const resetURL =
         process.env.NODE_ENV === "production"
-          ? `${process.env.LIVE_SITE}/reset-password?token=${resetToken}&email=${ForgotPasswordEmail}`
-          : `http://localhost:3000/reset-password?token=${resetToken}&email=${ForgotPasswordEmail}`;
+          ? `${process.env.LIVE_SITE}/reset-password?token=${resetToken}`
+          : `http://localhost:3000/reset-password?token=${resetToken}`;
 
       const mail = `Click on this link ${resetURL} to change your password.It expires in 10 minutes. \nIf you didn't initiate this, please contact the developer.`;
 
@@ -59,13 +59,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       res.status(500).json({ message: err.message });
     }
   } else if (req.method === "PATCH") {
-    const {
-      token,
-      email,
-      gReCaptchaToken,
-      password_reset,
-      confirm_password_reset,
-    } = req.body;
+    const { token, gReCaptchaToken, password_reset, confirm_password_reset } =
+      req.body;
 
     if (password_reset !== confirm_password_reset)
       return res.status(400).json({ message: "Passwords do not match" });
@@ -76,36 +71,24 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       if (!reCaptchaRes)
         return res.status(401).json({ message: "Unexpected error" });
 
-      console.log({ reCaptchaRes });
-
       const user = await User.findOne({
         passwordResetToken: token,
         passwordResetExpires: { $gt: Date.now() },
-      }).exec();
+      });
 
-      console.log({ user });
-
-      const userToUpdatePassword = await User.findOne({ email });
-      if (!userToUpdatePassword)
+      if (!user)
         return res.status(400).json({
-          message: "The user you are trying to update cannot be found.",
+          message: "Invalid or expired token.",
         });
 
-      // updates the password of staff
-      userToUpdatePassword.password = password_reset;
-      userToUpdatePassword.refreshToken = undefined;
-      // updates superuser
+      user.password = password_reset;
+      user.refreshToken = "";
       user.passwordResetToken = undefined;
       user.passwordResetExpires = undefined;
-
-      await userToUpdatePassword.save();
-      await user.save();
-
-      console.log({ userToUpdatePassword });
+      await user.save({ validateBeforeSave: false });
 
       return res.json({ message: "ok" });
     } catch (err: any) {
-      console.log(err);
       return res.status(500).json({ message: err.message });
     }
   } else {
