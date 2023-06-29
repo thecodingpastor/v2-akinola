@@ -72,7 +72,6 @@ const SingleBlogPage = (props: BlogPostType) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  let data;
   try {
     const res = await fetch(
       process.env.NODE_ENV === "production"

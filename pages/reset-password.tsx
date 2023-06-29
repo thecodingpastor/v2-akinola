@@ -63,7 +63,10 @@ const PasswordRestPage = () => {
           label="Enter your new password"
           onChange={handleChange}
           value={Values.password_reset}
+          pattern={Values.confirm_password_reset}
           required
+          border
+          errorText="Passwords do not match"
         />
         <FormInput
           type="password"
@@ -72,7 +75,10 @@ const PasswordRestPage = () => {
           label="Confirm password"
           onChange={handleChange}
           value={Values.confirm_password_reset}
+          pattern={Values.password_reset}
           required
+          border
+          errorText="Passwords do not match"
         />
         {!isValid ? (
           <p className="text-center fade">
