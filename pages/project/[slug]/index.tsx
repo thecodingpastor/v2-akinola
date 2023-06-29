@@ -15,7 +15,7 @@ const SingleProjectPage = (project: ProjectType) => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (!project) {
+    if (!project._id) {
       router.push("/");
       dispatch(
         AddAlertMessage({

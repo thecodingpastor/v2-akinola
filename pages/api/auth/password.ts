@@ -76,15 +76,14 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       if (!reCaptchaRes)
         return res.status(401).json({ message: "Unexpected error" });
 
+      console.log({ reCaptchaRes });
+
       const user = await User.findOne({
         passwordResetToken: token,
         passwordResetExpires: { $gt: Date.now() },
       }).exec();
 
-      if (!user)
-        return res
-          .status(400)
-          .json({ message: "Token is invalid or has expired." });
+      console.log({ user });
 
       const userToUpdatePassword = await User.findOne({ email });
       if (!userToUpdatePassword)
@@ -102,8 +101,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       await userToUpdatePassword.save();
       await user.save();
 
+      console.log({ userToUpdatePassword });
+
       return res.json({ message: "ok" });
-    } catch (err: any) {}
+    } catch (err: any) {
+      console.log(err);
+      return res.status(500).json({ message: err.message });
+    }
   } else {
     return res.status(401).json({ message: "Invalid request" });
   }
