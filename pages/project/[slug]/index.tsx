@@ -9,6 +9,7 @@ import { AddAlertMessage } from "../../../features/UI/UISlice";
 
 import { SetCurrentProject } from "../../../features/project/projectSlice";
 import { ProjectType } from "../../../features/project/type";
+import Transition from "../../../components/General/Transition";
 
 const SingleProjectPage = (project: ProjectType) => {
   const router = useRouter();
@@ -27,7 +28,7 @@ const SingleProjectPage = (project: ProjectType) => {
     dispatch(SetCurrentProject(project));
   }, []);
   return (
-    <>
+    <Transition mode="slide-right">
       <Head>
         <title>{project?.title || "Project"}</title>
       </Head>
@@ -58,7 +59,7 @@ const SingleProjectPage = (project: ProjectType) => {
         </div>
       </div>
       ;
-    </>
+    </Transition>
   );
 };
 

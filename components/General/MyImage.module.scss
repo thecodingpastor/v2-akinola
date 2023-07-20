@@ -1,0 +1,8 @@
+.MyImage {
+  filter: none;
+  transition: 300ms;
+
+  &.Loading {
+    filter: blur(5px);
+  }
+}

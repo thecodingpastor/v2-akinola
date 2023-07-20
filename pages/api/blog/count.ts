@@ -27,7 +27,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       const totalItemsCount = !req.cookies.akinola
         ? publishedBlogCount
         : blogCount;
-      const itemsPerPage = 3;
+      const itemsPerPage = 20;
 
       res.json({
         totalItemsCount,

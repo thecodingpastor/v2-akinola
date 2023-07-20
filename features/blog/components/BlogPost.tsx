@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import Link from "next/link";
 import Image from "next/image";
 
@@ -30,6 +32,7 @@ const BlogPost: React.FC<BlogPostType> = ({
 }) => {
   const { userId } = useAppSelector(SelectAuth);
   const { blogLoading } = useAppSelector(SelectBlog);
+  const [LoadingImage, setLoadingImage] = useState(true);
 
   return (
     <Link
@@ -46,6 +49,10 @@ const BlogPost: React.FC<BlogPostType> = ({
           blurDataURL={BlurImageUrl}
           placeholder="blur"
           alt={title}
+          className={`${classes.BlogImage} ${
+            LoadingImage ? classes.Loading : ""
+          }`}
+          onLoadingComplete={() => setLoadingImage(false)}
         />
       </div>
       <div className={classes.Heading}>

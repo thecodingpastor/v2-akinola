@@ -26,7 +26,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       }
 
       const blogs = await BlogPost.find(user?._id ? {} : { isPublished: true })
-        .sort("-views")
+        .sort("-createdAt")
         .select("-mainContent -isSlider -relatedPosts")
         .skip(skip)
         .limit(limit);
