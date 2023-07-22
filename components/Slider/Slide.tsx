@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { PositionTypes } from "./types";
+import { BlurImageUrl } from "../../fetchConfig/store";
 
 const Slide: React.FC<{ slideData: any; position: any }> = ({
-  // const Slide: React.FC<{ slideData: any; position: PositionTypes }> = ({
   slideData,
   position,
 }) => {
@@ -30,10 +29,10 @@ const Slide: React.FC<{ slideData: any; position: any }> = ({
       >
         <Image
           src={slideData.coverImage || "/images/placeholder.jpg"}
-          alt={slideData.title}
-          blurDataURL="/images/question.jpg"
+          fill
+          blurDataURL={BlurImageUrl}
           placeholder="blur"
-          layout="fill"
+          alt={slideData.title}
         />
       </div>
       <div className="slider_overlay"></div>

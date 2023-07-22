@@ -10,7 +10,7 @@ import Spin from "../../Loaders/Spin";
 // import GlobalContext from "../../../context/General/GlobalContext";
 
 import FormInput from "../../Form/FormInput";
-import { useAppDispatch } from "../../../fetchConfig/store";
+import { BlurImageUrl, useAppDispatch } from "../../../fetchConfig/store";
 
 import classes from "./Contact.module.scss";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
@@ -118,7 +118,7 @@ const Contact = () => {
             width="380"
             height="380"
             alt="contact-image"
-            blurDataURL="/images/question.jpg"
+            blurDataURL={BlurImageUrl}
             placeholder="blur"
           />
         </div>

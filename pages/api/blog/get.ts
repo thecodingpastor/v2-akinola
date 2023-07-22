@@ -13,9 +13,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(429).json({ message: "Too many requests" });
     }
     const { userId, page } = req.query;
-    const limit = 20;
+    const itemsPerPage = 20;
     const currentPage = Number(page) || 1;
-    const skip = (currentPage - 1) * limit;
+    const skip = (currentPage - 1) * itemsPerPage;
 
     try {
       let user: any;
@@ -29,7 +29,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         .sort("-createdAt")
         .select("-mainContent -isSlider -relatedPosts")
         .skip(skip)
-        .limit(limit);
+        .limit(itemsPerPage);
 
       if (!blogs)
         return res

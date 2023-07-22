@@ -39,7 +39,9 @@ const MyPagination = ({
 
   const dispatch = useAppDispatch();
 
-  const setPage = (param: number) => dispatch(SetPage(param));
+  const setPage = (param: number) => {
+    dispatch(SetPage(param));
+  };
 
   useEffect(() => {
     // This useEffect will make set the active page to 1 if a user one way or the other enables the disabled buttons
@@ -72,7 +74,12 @@ const MyPagination = ({
           {paginationRange.map((pageNumber) => {
             if (pageNumber === DOTS) {
               return (
-                <li className={`${classes.Item} ${classes.Dots}`}>&#8230;</li>
+                <li
+                  key={pageNumber}
+                  className={`${classes.Item} ${classes.Dots}`}
+                >
+                  &#8230;
+                </li>
               );
             }
 

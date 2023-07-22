@@ -49,7 +49,11 @@ const SingleBlogPage = (props: BlogPostType) => {
       replace("/blog");
       return;
     }
-  }, [props?.slug]);
+
+    return () => {
+      dispatch(SetCurrentBlog(null));
+    };
+  }, []);
 
   if (currentBlog === null) return <AuthPageLoading />;
 

@@ -2,11 +2,6 @@
 
 .Container {
   position: relative;
-  // max-width: 80rem;
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
-  // gap: 1rem;
   width: 100%;
 
   .Inner {
@@ -28,8 +23,12 @@
   .ImgDiv {
     position: relative;
     width: 10rem;
-    height: 12rem;
+    height: 16rem;
     flex-shrink: 0;
+    border: 2px solid $color-pry-dark;
+    padding: .5rem;
+    border-radius: 1rem;
+    
 
     @media screen and (max-width: 500px) {
       &:first-of-type {
@@ -48,7 +47,7 @@
 
     svg {
       position: absolute;
-      top: 0.5rem;
+      bottom: 1rem;
       right: 0.5rem;
       z-index: 5;
       font-size: 2.5rem;

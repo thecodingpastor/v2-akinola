@@ -82,12 +82,6 @@ const BlogForm: React.FC<{ isEdit?: boolean }> = ({ isEdit }) => {
   const { title, estimatedReadTime, intro } = BlogFormValues;
 
   const BlogIsValid = /^.{5,100}$/.test(title) && /\d+/.test(estimatedReadTime);
-  //  &&
-  //  /^.{100,200}$/.test(intro);
-  // /^.{100,200}$/
-
-  // console.log(/^.{100,200}$/.test(intro));
-  // console.log(BlogIsValid);
 
   // I only implemented this to create course, not to edit it
   const [Value, setValue] = useLocalStorage(

@@ -17,7 +17,7 @@ const getIP = (req: any) =>
   req.socket.remoteAddress;
 
 export const getRateLimitMiddlewares = ({
-  limit = 20,
+  limit = 30,
   windowMs = 60 * 1000,
   delayAfter = Math.round(20 / 2),
   delayMs = 500,

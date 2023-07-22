@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import Link from "next/link";
 import Image from "next/image";
 
@@ -9,7 +7,6 @@ import __ from "../../../utils/formatDate";
 
 import { FaThumbsUp, FaRegThumbsUp } from "react-icons/fa";
 
-import Placeholder from "../../../public/images/placeholder.jpg";
 import { BlurImageUrl, useAppSelector } from "../../../fetchConfig/store";
 
 import { AiOutlineEye } from "react-icons/ai";
@@ -32,7 +29,6 @@ const BlogPost: React.FC<BlogPostType> = ({
 }) => {
   const { userId } = useAppSelector(SelectAuth);
   const { blogLoading } = useAppSelector(SelectBlog);
-  const [LoadingImage, setLoadingImage] = useState(true);
 
   return (
     <Link
@@ -41,18 +37,15 @@ const BlogPost: React.FC<BlogPostType> = ({
         blogLoading === "default" ? classes.Loading : ""
       }`}
     >
-      <div style={{ width: "100%" }}>
+      <div style={{ width: "100%", height: "13rem", position: "relative" }}>
         <Image
-          src={images[0]?.url || Placeholder}
-          width="170"
-          height="130"
+          src={images[0]?.url || "/images/placeholder.jpg"}
+          fill
           blurDataURL={BlurImageUrl}
           placeholder="blur"
           alt={title}
-          className={`${classes.BlogImage} ${
-            LoadingImage ? classes.Loading : ""
-          }`}
-          onLoadingComplete={() => setLoadingImage(false)}
+          // sizes="(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 33vw"
+          sizes="170px"
         />
       </div>
       <div className={classes.Heading}>

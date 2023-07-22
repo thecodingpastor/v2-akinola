@@ -28,15 +28,6 @@ const BlogPage = () => {
     itemsPerPage,
   } = useAppSelector(SelectBlog);
 
-  console.log({
-    blogPosts,
-    oldPage,
-    page,
-    totalItemsCount,
-    totalPages,
-    itemsPerPage,
-  });
-
   useEffect(() => {
     if (blogPosts === null || oldPage !== page) {
       if (page > totalPages) {
@@ -45,7 +36,12 @@ const BlogPage = () => {
       }
 
       dispatch(GetAllBlogPosts({ page, userId: userId || "" })).then((data) => {
-        if (data.meta.requestStatus === "fulfilled") dispatch(SetOldPage(page));
+        if (data.meta.requestStatus === "fulfilled") {
+          dispatch(SetOldPage(page));
+          window.scroll({
+            top: 0,
+          });
+        }
       });
     }
   }, [page]);

@@ -25,6 +25,7 @@ export const saveImageInCloud = async (
 
 export const deleteImageInCloud = async (imageCloudId: string) => {
   const result = await cloudinary.uploader.destroy(imageCloudId);
+    
   if (result.result !== "ok") return null;
   return true;
 };

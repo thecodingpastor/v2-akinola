@@ -10,6 +10,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     method,
     query: { slug, fileId },
   } = req;
+
   if (method !== "DELETE")
     return res.status(401).json({ message: "Invalid request" });
 
@@ -25,10 +26,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (!blog) return res.status(400).json({ message: "Blog not found!" });
 
     const result = await deleteImageInCloud(fileId as string);
-    if (result === null)
+
+    if (result === null) {
       return res
         .status(500)
         .json({ message: "File already deleted or not found." });
+    }
 
     const updatedImages = blog.images.filter(
       (img: any) => img.fileId !== fileId

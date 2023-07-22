@@ -16,8 +16,7 @@ export const store = configureStore({
   devTools: process.env.NODE_ENV !== "production",
 });
 
-export const BlurImageUrl =
-  "https://res.cloudinary.com/indelible-success/image/upload/v1687537144/akinola/loading-removebg-preview_y3jn5v.png";
+export const BlurImageUrl = "/images/test.jpg";
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

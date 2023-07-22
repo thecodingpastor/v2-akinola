@@ -8,25 +8,25 @@ import { AddAlertMessage } from "../../../features/UI/UISlice";
 import CreateBlog from "../../../features/blog/components/CreateBlog";
 import { GetSingleBlogFromBackend } from "../../../features/blog/blogApi";
 import Transition from "../../../components/General/Transition";
+import AuthPageLoading from "../../../components/Loaders/AuthPageLoading";
 
 const EditBlogPost = () => {
-  const { pathname, query, replace } = useRouter();
+  const { query, replace } = useRouter();
 
   const dispatch = useAppDispatch();
-  const { currentBlog } = useAppSelector(SelectBlog);
+  const { currentBlog, blogLoading } = useAppSelector(SelectBlog);
 
   useEffect(() => {
-    // This works when the edit page is reloaded
-    if (pathname === "/blog/[slug]/edit") {
-      dispatch(GetSingleBlogFromBackend(query?.slug as string));
-    }
+    dispatch(GetSingleBlogFromBackend(query?.slug as string)).then((data) => {
+      if (!data.payload._id) {
+        replace("/blog");
+        dispatch(AddAlertMessage({ message: "Blog not found" }));
+        return;
+      }
+    });
   }, []);
 
-  if (!currentBlog?._id) {
-    replace("/blog");
-    dispatch(AddAlertMessage({ message: "Blog not found" }));
-    return;
-  }
+  if (blogLoading === "default") return <AuthPageLoading />;
 
   return (
     <Transition mode="slide-right">

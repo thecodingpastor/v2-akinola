@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import classes from "./About.module.scss";
+import { BlurImageUrl } from "../../../fetchConfig/store";
 
 const About = () => {
   return (
@@ -13,7 +14,7 @@ const About = () => {
             alt="Michael Akinola"
             width={400}
             height={400}
-            blurDataURL="/images/question.jpg"
+            blurDataURL={BlurImageUrl}
             placeholder="blur"
           />
         </div>

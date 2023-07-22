@@ -47,7 +47,7 @@ const MainBlogContent: React.FC<{ currentBlog: BlogPostType | null }> = ({
             blurDataURL={BlurImageUrl}
             placeholder="blur"
             className={classes.Img}
-            // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </div>
         <h1 className={classes.Title}>{currentBlog?.title}</h1>

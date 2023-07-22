@@ -15,6 +15,7 @@ import ConfirmModal from "../Modal/ConfirmModal";
 import { SelectBlog } from "../../features/blog/blogSlice";
 import { DeleteBlogImageFromCloud } from "../../features/blog/blogApi";
 import { SelectProject } from "../../features/project/projectSlice";
+import CopyUrlButton from "../General/CopyURLButton";
 
 const ImageTile: React.FC<{
   setImages: React.Dispatch<any>;
@@ -92,6 +93,20 @@ const ImageTile: React.FC<{
         <BsUpload className={classes.Upload} onClick={onClick} />
         {Images.map((img: any, i) => (
           <div key={i} className={classes.ImgDiv}>
+            {img?.url && !img?.size && <CopyUrlButton url={img.url} />}
+
+            <div
+              style={{ width: "100%", height: "13rem", position: "relative" }}
+            >
+              <Image
+                src={img?.url?.toString() || img?.url}
+                alt="Picked Image"
+                fill
+                sizes="100px"
+                onClick={onClick}
+              />
+            </div>
+
             <AiFillCloseCircle
               onClick={(e) => {
                 clear(
@@ -101,13 +116,6 @@ const ImageTile: React.FC<{
                     : { identifier: img.fileId, isNew: false }
                 );
               }}
-            />
-            <Image
-              src={img?.url?.toString() || img?.url}
-              alt="Picked Image"
-              width="100"
-              height="120"
-              onClick={onClick}
             />
           </div>
         ))}

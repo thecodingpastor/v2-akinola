@@ -235,7 +235,7 @@ export const DeleteBlogImageFromCloud = createAsyncThunk(
     } catch (err: any) {
       dispatch(
         AddAlertMessage({
-          message: err.response.data || defaultErrorMessage,
+          message: err.response?.data.message || defaultErrorMessage,
         })
       );
       return rejectWithValue(err);
