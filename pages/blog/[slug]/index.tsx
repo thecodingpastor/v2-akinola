@@ -38,7 +38,7 @@ const SingleBlogPage = (props: BlogPostType) => {
   }, [userId]);
 
   useEffect(() => {
-    if (props._id) {
+    if (props.slug) {
       dispatch(SetCurrentBlog(props));
     } else {
       dispatch(
@@ -53,7 +53,7 @@ const SingleBlogPage = (props: BlogPostType) => {
     return () => {
       dispatch(SetCurrentBlog(null));
     };
-  }, []);
+  }, [props.slug]);
 
   if (currentBlog === null) return <AuthPageLoading />;
 

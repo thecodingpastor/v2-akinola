@@ -18,7 +18,7 @@ export default function App({ Component, pageProps }: AppProps) {
           name="description"
           content="Michael Akinola is  a data scientist, currently deploying advanced data analytics techniques and machine learning algorithms to build predictive models for real world applications"
         />
-        <link rel="icon" href="/images/logo.png" />
+        <link rel="icon" href="/images/logo.webp" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <RouteLoading />

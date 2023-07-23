@@ -10,7 +10,7 @@ const About = () => {
       <section className={classes.About}>
         <div className={classes.MichaelContainer}>
           <Image
-            src="/images/mike.png"
+            src="/images/mike.webp"
             alt="Michael Akinola"
             width={400}
             height={400}

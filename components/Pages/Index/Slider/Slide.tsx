@@ -24,9 +24,9 @@ const Slide = ({ slideData, position }: any) => {
         }}
       >
         <Image
-          src={slideData.images[0]?.url || "/images/placeholder.jpg"}
+          src={slideData.images[0]?.url || "/images/placeholder.webp"}
           alt={slideData.title}
-          blurDataURL="/images/test.jpg"
+          blurDataURL="/images/test.webp"
           placeholder="blur"
           fill
         />

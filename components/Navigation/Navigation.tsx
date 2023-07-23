@@ -35,7 +35,7 @@ const Navigation = () => {
         <Link href="/">
           <div className={classes.LogoContainer}>
             <Image
-              src="/images/logo.png"
+              src="/images/logo.webp"
               alt="Michael Akinola's Logo"
               width="40"
               height="40"

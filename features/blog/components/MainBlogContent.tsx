@@ -2,7 +2,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
-import PlaceholderImage from "../../../public/images/placeholder.jpg";
+import PlaceholderImage from "../../../public/images/placeholder.webp";
 
 import { BlogPostType } from "../types";
 import Tiptap from "../../../components/editor/TipTapEditor";

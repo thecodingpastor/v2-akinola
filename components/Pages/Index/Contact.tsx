@@ -114,7 +114,7 @@ const Contact = () => {
         </form>
         <div className={classes.ContactImage}>
           <Image
-            src="/images/customer-service.png"
+            src="/images/customer-service.webp"
             width="380"
             height="380"
             alt="contact-image"

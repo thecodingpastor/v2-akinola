@@ -39,7 +39,7 @@ const BlogPost: React.FC<BlogPostType> = ({
     >
       <div style={{ width: "100%", height: "13rem", position: "relative" }}>
         <Image
-          src={images[0]?.url || "/images/placeholder.jpg"}
+          src={images[0]?.url || "/images/placeholder.webp"}
           fill
           blurDataURL={BlurImageUrl}
           placeholder="blur"

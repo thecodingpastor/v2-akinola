@@ -31,8 +31,7 @@ const MyImage = ({
     src,
     // placeholder: "blur",
     alt: alt || "Image",
-    blurDataURL:
-      "https://res.cloudinary.com/indelible-success/image/upload/v1687537144/akinola/loading-removebg-preview_y3jn5v.png",
+    blurDataURL: BlurImageUrl,
     onLoadingComplete: () => setLoading(false),
     className: `${classes.MyImage} ${className || ""} ${
       Loading ? classes.Loading : ""

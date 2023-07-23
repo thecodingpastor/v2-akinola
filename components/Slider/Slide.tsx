@@ -28,7 +28,7 @@ const Slide: React.FC<{ slideData: any; position: any }> = ({
         }}
       >
         <Image
-          src={slideData.coverImage || "/images/placeholder.jpg"}
+          src={slideData.coverImage || "/images/placeholder.webp"}
           fill
           blurDataURL={BlurImageUrl}
           placeholder="blur"

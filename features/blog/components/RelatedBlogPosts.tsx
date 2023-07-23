@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import PlaceholderImage from "../../../assets/images/placeholder.jpg";
+import PlaceholderImage from "../../../assets/images/placeholder.webp";
 
 import Link from "next/link";
 import { BlurImageUrl, useAppDispatch } from "../../../fetchConfig/store";

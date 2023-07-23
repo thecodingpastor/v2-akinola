@@ -28,7 +28,7 @@ function Footer() {
         {accessToken && <AiOutlineLogout onClick={() => dispatch(LogOut())} />}
         <div>
           <Image
-            src="/images/logo.png"
+            src="/images/logo.webp"
             alt="Michael Akinola"
             width={30}
             height="30"

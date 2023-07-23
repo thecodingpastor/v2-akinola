@@ -16,7 +16,7 @@ export const store = configureStore({
   devTools: process.env.NODE_ENV !== "production",
 });
 
-export const BlurImageUrl = "/images/test.jpg";
+export const BlurImageUrl = "/images/test.webp";
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
