@@ -13,6 +13,7 @@ export const saveImageInCloud = async (
   const result = await cloudinary.uploader.upload(imageBase64String, {
     upload_preset: process.env.CLOUDINARY_PRESET,
     folder: folder ? folder : "akinola",
+    format: "webp",
   });
 
   if (!result) return null;
@@ -25,7 +26,7 @@ export const saveImageInCloud = async (
 
 export const deleteImageInCloud = async (imageCloudId: string) => {
   const result = await cloudinary.uploader.destroy(imageCloudId);
-    
+
   if (result.result !== "ok") return null;
   return true;
 };

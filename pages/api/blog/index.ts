@@ -8,6 +8,8 @@ import cloudinary, { saveImageInCloud } from "../../../utils/cloudinary";
 import Protect from "../../../middleware/protect";
 import ValidateImages, { ImageType } from "../../../utils/validateImage";
 
+export const config = { api: { bodyParser: { sizeLimit: "5mb" } } };
+
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {
     const {

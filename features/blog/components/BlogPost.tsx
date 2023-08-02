@@ -45,7 +45,7 @@ const BlogPost: React.FC<BlogPostType> = ({
           placeholder="blur"
           alt={title}
           // sizes="(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 33vw"
-          sizes="170px"
+          sizes="500px"
         />
       </div>
       <div className={classes.Heading}>
